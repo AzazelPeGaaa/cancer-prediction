@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Cáncer de Seno (Múltiples Casos)</title>
+</head>
+<body>
+    <h2>Predicción de Cáncer de Seno (Múltiples Casos)</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Paciente 1 -->
+        <h3>Paciente 1</h3>
+        <label for="concave_points_worst_1">Concave Points Worst:</label>
+        <input type="text" id="concave_points_worst_1" name="concave_points_worst_1" required><br>
+
+        <label for="concave_points_mean_1">Concave Points Mean:</label>
+        <input type="text" id="concave_points_mean_1" name="concave_points_mean_1" required><br>
+
+        <label for="perimeter_worst_1">Perimeter Worst:</label>
+        <input type="text" id="perimeter_worst_1" name="perimeter_worst_1" required><br>
+
+        <label for="concavity_mean_1">Concavity Mean:</label>
+        <input type="text" id="concavity_mean_1" name="concavity_mean_1" required><br>
+
+        <label for="radius_worst_1">Radius Worst:</label>
+        <input type="text" id="radius_worst_1" name="radius_worst_1" required><br>
+
+        <label for="area_worst_1">Area Worst:</label>
+        <input type="text" id="area_worst_1" name="area_worst_1" required><br>
+
+        <!-- Paciente 2 -->
+        <h3>Paciente 2</h3>
+        <label for="concave_points_worst_2">Concave Points Worst:</label>
+        <input type="text" id="concave_points_worst_2" name="concave_points_worst_2" required><br>
+
+        <label for="concave_points_mean_2">Concave Points Mean:</label>
+        <input type="text" id="concave_points_mean_2" name="concave_points_mean_2" required><br>
+
+        <label for="perimeter_worst_2">Perimeter Worst:</label>
+        <input type="text" id="perimeter_worst_2" name="perimeter_worst_2" required><br>
+
+        <label for="concavity_mean_2">Concavity Mean:</label>
+        <input type="text" id="concavity_mean_2" name="concavity_mean_2" required><br>
+
+        <label for="radius_worst_2">Radius Worst:</label>
+        <input type="text" id="radius_worst_2" name="radius_worst_2" required><br>
+
+        <label for="area_worst_2">Area Worst:</label>
+        <input type="text" id="area_worst_2" name="area_worst_2" required><br>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    <!-- Mostrar resultados si existen -->
+    {% if resultados %}
+        <h2>Resultados de la Predicción</h2>
+        {% for result in resultados %}
+            <h3>{{ result.Paciente }}</h3>
+            <p>Probabilidad de Benigno: {{ result.Probabilidad_de_Benigno }}</p>
+            <p>Probabilidad de Maligno: {{ result.Probabilidad_de_Maligno }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
